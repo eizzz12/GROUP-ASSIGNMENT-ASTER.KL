@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Aster.KL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --maroon: #4b0313; --bg-sidebar: #fafafa; }
+        body { font-family: 'Montserrat', sans-serif; margin: 0; }
+        .checkout-container { display: grid; grid-template-columns: 1.1fr 0.9fr; min-height: 100vh; }
+        
+        /* Bahagian Kiri (Form) */
+        .main-content { padding: 60px 10% 60px 15%; border-right: 1px solid #eee; }
+        .logo { font-family: 'Playfair Display'; color: var(--maroon); letter-spacing: 5px; text-decoration: none; font-size: 32px; }
+        h3 { margin: 30px 0 15px; font-size: 18px; }
+        input, select { width: 100%; padding: 13px; margin-bottom: 12px; border: 1px solid #d9d9d9; border-radius: 4px; font-size: 14px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .order-btn { width: 100%; padding: 20px; background: #000; color: #fff; border: none; font-weight: 600; cursor: pointer; letter-spacing: 2px; margin-top: 20px; }
+
+        /* Bahagian Kanan (Summary) */
+        .sidebar { background: var(--bg-sidebar); padding: 60px 15% 60px 5%; }
+        .item-row { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .item-img { width: 65px; height: 85px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd; }
+        .item-info { flex: 1; }
+        .item-info h4 { font-size: 14px; margin: 0; }
+        .item-info p { font-size: 12px; color: #777; margin: 4px 0 0; }
+        .total-row { display: flex; justify-content: space-between; margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd; font-weight: 600; font-size: 18px; }
+
+        @media (max-width: 1000px) {
+            .checkout-container { grid-template-columns: 1fr; }
+            .sidebar { order: -1; padding: 40px 10%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="checkout-container">
+    <div class="main-content">
+        <a href="index.html" class="logo">ASTER.KL</a>
+        <form id="orderForm">
+            <h3>Delivery Information</h3>
+            <input type="email" placeholder="Emel" required>
+            <div class="grid-2">
+                <input type="text" placeholder="First Name" required>
+                <input type="text" placeholder="Last Name" required>
+            </div>
+            <input type="text" placeholder="Full Address" required>
+            <div class="grid-2">
+                <input type="text" placeholder="City" required>
+                <input type="text" placeholder="Poscod" required>
+            </div>
+            <select required>
+                <option value="" disabled selected>State</option>
+                <option>Johor</option><option>Kedah</option><option>Kelantan</option><option>Kuala Lumpur</option><option>Labuan</option><option>Melaka</option>
+    <option>Negeri Sembilan</option><option>Pahang</option><option>Perak</option><option>Perlis</option><option>Pulau Pinang</option><option>Putrajaya</option>
+    <option>Sabah</option><option>Sarawak</option><option>Selangor</option><option>Terengganu</option>
+            </select>
+            
+            <h3>Payment</h3>
+            <div style="border: 1px solid #ddd; padding: 15px; border-radius: 4px;">
+                <label><input type="radio" name="pay" checked>Online Banking (FPX)</label>
+            </div>
+            <button type="submit" class="order-btn">ORDER PROCESS</button>
+        </form>
+    </div>
+
+    <div class="sidebar">
+        <div id="summary-items">
+            </div>
+        <div class="total-row">
+            <span>Total</span>
+            <span id="summary-total">RM 0.00</span>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const cart = JSON.parse(localStorage.getItem('asterCart')) || [];
+        const container = document.getElementById('summary-items');
+        const totalSpan = document.getElementById('summary-total');
+        let grandTotal = 0;
+
+        if(cart.length === 0) {
+            container.innerHTML = "<p>Troli anda kosong.</p>";
+            return;
+        }
+
+        cart.forEach(item => {
+            const lineTotal = item.price * item.qty;
+            grandTotal += lineTotal;
+            container.innerHTML += `
+                <div class="item-row">
+                    <img src="${item.img}" class="item-img">
+                    <div class="item-info">
+                        <h4>${item.name}</h4>
+                        <p>Saiz: ${item.size} | Kuantiti: ${item.qty}</p>
+                    </div>
+                    <strong>RM ${lineTotal}.00</strong>
+                </div>
+            `;
+        });
+        totalSpan.innerText = `RM ${grandTotal}.00`;
+    });
+
+    document.getElementById('orderForm').onsubmit = (e) => {
+        e.preventDefault();
+        alert("Pesanan diterima! Terima kasih.");
+        localStorage.removeItem('asterCart'); 
+        window.location.href = "index.html";
+    };
+</script>
+
+</body>
+</html>

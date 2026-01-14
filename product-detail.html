@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Detail | Aster.KL</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="catalog.html">← BACK TO CATALOG</a>
+    <a href="index.html">HOME</a>
+    <a href="#" id="cart-icon">CART (<span id="cart-count">0</span>)</a>
+</nav>
+
+<div class="product-detail-container">
+    <div class="product-img">
+        <img id="product-image" src="images/loading.jpg" alt="Loading Product...">
+    </div>
+
+    <div class="product-info">
+        <h1 id="product-name">Loading...</h1>
+        <p class="price" id="product-price"></p>
+        
+        <p class="label-title">SIZE:</p>
+        <div class="size-selector">
+            <input type="radio" name="size" value="XS" id="xs">
+            <label for="xs">XS</label>
+            <input type="radio" name="size" value="S" id="s">
+            <label for="s">S</label>
+            <input type="radio" name="size" value="M" id="m" checked>
+            <label for="m">M</label>
+            <input type="radio" name="size" value="L" id="l">
+            <label for="l">L</label>
+            <input type="radio" name="size" value="XL" id="xl">
+            <label for="xl">XL</label>
+            <input type="radio" name="size" value="XXL" id="xxl">
+            <label for="xxl">XXL</label>
+        </div>
+
+        <div class="purchase-section">
+            <label for="product-quantity" class="label-title">QUANTITY:</label>
+            <input type="number" id="product-quantity" value="1" min="1">
+            <button id="add-to-cart">ADD TO CART</button>
+        </div>
+    </div>
+</div>
+
+<div id="cart-overlay" class="cart-overlay"></div>
+<div id="cart-drawer" class="cart-drawer">
+    <div class="cart-header">
+        <h3>YOUR CART</h3>
+        <span id="close-cart">CLOSE ✕</span>
+    </div>
+    <div id="cart-items-container"></div>
+    <div class="cart-footer">
+        <div class="cart-total-row">
+            <span>TOTAL:</span>
+            <span id="cart-total">RM 0.00</span>
+        </div>
+        <button class="checkout-btn" id="checkout">CHECKOUT</button>
+    </div>
+</div>
+
+<footer class="footer">
+        <div class="footer-content">
+            <div class="f-logo">ASTER.KL</div>
+            <div class="f-links">
+                <a href="https://www.instagram.com/aster.kl" target="_blank">Instagram</a>
+                <a href="https://www.tiktok.com/@aster.kl" target="_blank">TikTok</a><br><br>
+                <p>© 2025 ASTER| KL . All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+<script>
+
+// ==========================
+// PRODUCTS DATABASE 
+// ==========================
+const products = {
+    // SUMMER COLLECTION
+    "summer1": {name:"Summer Look 01", price:149, img:"images/summer 1.jpg"},
+    "summer2": {name:"Summer Look 02", price:149, img:"images/summer 2.jpg"},
+    "summer3": {name:"Summer Look 03", price:149, img:"images/summer 3.jpg"},
+    "summer4": {name:"Summer Look 04", price:149, img:"images/summer 4.jpg"},
+    "summer5": {name:"Summer Look 05", price:149, img:"images/summer 5.jpg"},
+    "summer6": {name:"Summer Look 06", price:149, img:"images/summer 6.jpg"},
+
+    // KARYA AGUNG 
+    "karya1": {name:"Karya Look 01", price:299, img:"images/karya agung 1.jpg"},
+    "karya2": {name:"Karya Look 02", price:299, img:"images/karya agung 2.jpg"},
+    "karya3": {name:"Karya Look 03", price:299, img:"images/karya agung 3.jpg"},
+    "karya4": {name:"Karya Look 04", price:299, img:"images/karya agung 4.jpg"},
+    "karya5": {name:"Karya Look 05", price:299, img:"images/karya agung 5.jpg"},
+    "karya6": {name:"Karya Look 06", price:299, img:"images/karya agung 6.jpg"},
+
+    // KHALEEJI COLLECTION
+    "khaleeji1": {name:"Khaleeji Look 01", price:359, img:"images/khaleji 1.jpg"},
+    "khaleeji2": {name:"Khaleeji Look 02", price:359, img:"images/khaleji 2.jpg"},
+    "khaleeji3": {name:"Khaleeji Look 03", price:359, img:"images/khaleji 3.jpg"},
+    "khaleeji4": {name:"Khaleeji Look 04", price:359, img:"images/khaleji 4.jpg"},
+    "khaleeji5": {name:"Khaleeji Look 05", price:359, img:"images/khaleji 5.jpg"},
+    "khaleeji6": {name:"Khaleeji Look 06", price:359, img:"images/khaleji 6.jpg"},
+
+    // TRENCH COLLECTION
+    "trench1": {name:"Trench Look 01", price:489, img:"images/latrench 1.jpg"},
+    "trench2": {name:"Trench Look 02", price:489, img:"images/latrench 2.jpg"},
+    "trench3": {name:"Trench Look 03", price:489, img:"images/latrench 3.jpg"},
+    "trench4": {name:"Trench Look 04", price:489, img:"images/latrench 4.jpg"},
+    "trench5": {name:"Trench Look 05", price:489, img:"images/latrench 5.jpg"},
+    "trench6": {name:"Trench Look 06", price:489, img:"images/latrench 6.jpg"},
+
+    // EID 2025 COLLECTION
+    "aude1": {name:"Aude Classic Hazel", price:249, img:"images/aude 1.jpg"},
+    "aude2": {name:"Aude Classic White", price:249, img:"images/aude 2.jpg"},
+    "aude3": {name:"Aude Classic Smokey", price:269, img:"images/aude 3.jpg"},
+    "aude4": {name:"Aude Classic Blossom", price:289, img:"images/aude 4.jpg"},
+    "aude5": {name:"Aude Classic Olive", price:229, img:"images/aude 5.jpg"},
+
+    "asim1": {name:"Asimetrik White Top", price:189, img:"images/asimetrik 1.jpg"},
+    "asim2": {name:"Asimetrik Hazel Top", price:189, img:"images/asimetrik 2.jpg"},
+    "asim3": {name:"Asimetrik Set White", price:289, img:"images/asimetrik 3.jpg"},
+    "asim4": {name:"Asimetrik Set Hazel", price:289, img:"images/asimetrik 4.jpg"},
+    "asim5": {name:"Asimetrik Kaftan", price:99, img:"images/asimetrik 5.jpg"},
+
+    "grand1": {name:"Grandeur Silk Champange", price:359, img:"images/grandeur 1.jpg"},
+    "grand2": {name:"Grandeur Silk Sage", price:359, img:"images/grandeur 2.jpg"},
+    "grand3": {name:"Grandeur Silk Blossom", price:359, img:"images/grandeur 3.jpg"},
+    "grand4": {name:"Grandeur Silk Pure", price:359, img:"images/grandeur 4.jpg"},
+    "grand5": {name:"Grandeur Silk Black", price:359, img:"images/grandeur 5.jpg"},
+
+    "eth1": {name:"Ethereal Organza Sakura", price:289, img:"images/ethereal 1.jpg"},
+    "eth2": {name:"Ethereal Hazel", price:299, img:"images/ethereal 2.jpg"},
+    "eth3": {name:"Ethereal Champange", price:299, img:"images/ethereal 3.jpg"},
+    "eth4": {name:"Ethereal Cloud", price:229, img:"images/ethereal 4.jpg"},
+    "eth5": {name:"Ethereal Organza Dream", price:289, img:"images/ethereal 5.jpg"},
+
+    // SALE COLLECTION
+    "bundle1": {name:"Linoire Bundle Set (White)", price:249, img:"images/set bundle 1.jpg.jpeg"},
+    "bundle2": {name:"Linoire Bundle Set (Pink)", price:249, img:"images/set bundle 2.jpg.jpeg"},
+    "clear1": {name:"Trench Coat (Black)", price:149, img:"images/clearence 1.jpg.jpeg"},
+    "clear2": {name:"Trench Coat (Beige)", price:149, img:"images/clearence 2.jpg.jpeg"},
+    "clear3": {name:"Trench Coat (Grey)", price:149, img:"images/clearence 3.jpg.jpeg"}
+};
+
+// ==========================
+// LOAD PRODUCT DETAIL
+// ==========================
+const params = new URLSearchParams(window.location.search);
+const productId = params.get("productID");
+
+const imgEl = document.getElementById("product-image");
+const nameEl = document.getElementById("product-name");
+const priceEl = document.getElementById("product-price");
+
+if(productId && products[productId]){
+    const p = products[productId];
+    imgEl.src = p.img;
+    nameEl.textContent = p.name;
+    priceEl.textContent = "RM " + p.price + ".00";
+} else {
+    imgEl.src = "images/product-not-found.jpg"; 
+    nameEl.textContent = "Product not found";
+    priceEl.textContent = "";
+}
+
+// ==========================
+// UPDATE SHOPPING CART
+// ==========================
+let cart = JSON.parse(localStorage.getItem('asterCart')) || [];
+
+function updateCartUI(){
+    const container = document.getElementById('cart-items-container');
+    const countSpan = document.getElementById('cart-count');
+    const totalSpan = document.getElementById('cart-total');
+
+    container.innerHTML = '';
+    let total = 0;
+
+    cart.forEach((item,index)=>{
+        total += (item.price * item.qty);
+        container.innerHTML += `
+            <div class="cart-item">
+                <img src="${item.img}" alt="${item.name}">
+                <div class="item-info">
+                    <h4>${item.name}</h4>
+                    <p>Size: ${item.size} | Qty: ${item.qty}</p>
+                    <p><strong>RM ${item.price * item.qty}.00</strong></p>
+                </div>
+                <button onclick="removeItem(${index})" class="remove-btn">✕</button>
+            </div>
+        `;
+    });
+
+    countSpan.innerText = cart.length;
+    totalSpan.innerText = `RM ${total}.00`;
+    localStorage.setItem('asterCart', JSON.stringify(cart));
+}
+
+function removeItem(index){
+    cart.splice(index,1);
+    updateCartUI();
+}
+
+function toggleCart(show){
+    document.getElementById('cart-drawer').classList.toggle('open', show);
+    document.getElementById('cart-overlay').classList.toggle('active', show);
+}
+// ==========================
+// UNTUK ADD TO CART
+// ==========================
+document.getElementById("add-to-cart").addEventListener("click",()=>{
+    const size = document.querySelector('input[name="size"]:checked').value;
+    const qty = parseInt(document.getElementById("product-quantity").value);
+
+    if(productId && products[productId]){
+        const productToAdd = {...products[productId], size:size, qty:qty};
+        cart.push(productToAdd);
+        updateCartUI();
+        toggleCart(true);
+    }
+});
+
+document.getElementById('cart-icon').onclick=(e)=>{e.preventDefault(); toggleCart(true)};
+document.getElementById('close-cart').onclick=()=>toggleCart(false);
+document.getElementById('cart-overlay').onclick=()=>toggleCart(false);
+
+// INIT
+updateCartUI();
+
+
+</script>
+
+</body>
+</html>
+

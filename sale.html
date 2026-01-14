@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sale | Aster.KL Official</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="sale-page">
+
+<nav class="navbar">
+    <div class="nav-links">
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT US</a>
+        <a href="eid2025.html">EID 2025</a>
+        <a href="collection.html">COLLECTION</a>
+        <a href="policy.html">POLICY</a>
+        <a href="sale.html" class="sale">SALE</a><br>
+        <a href="#" id="cart-icon">CART (<span id="cart-count">0</span>)</a>
+    </div>
+    <div class="mobile-nav">
+        <div class="logo-mobile">ASTER.KL</div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+<section class="sale-hero">
+    <div class="sale-overlay">
+        <span>LIMITED TIME ONLY</span>
+        <h1>END OF SEASON SALE</h1>
+        <p>RM50 off on selected pieces</p>
+    </div>
+</section>
+
+<div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+
+    <!-- Discounted Sets -->
+    <section class="sale-section">
+        <div class="sale-header">
+            <h2>Discounted Sets</h2>
+            <p>Perfect pairings at a special price</p>
+        </div>
+
+        <div class="sale-grid">
+            <div class="sale-card">
+                <div class="badge">SAVE RM50</div>
+                <div class="sale-img">
+                    <a href="product-detail.html?productID=bundle1">
+                        <img src="images/set bundle 1.jpg.jpeg" alt="Linoire Bundle White">
+                    </a>
+                    <div class="add-cart-overlay">QUICK ADD</div>
+                </div>
+                <div class="sale-info">
+                    <h4>Linoire Bundle Set (White)</h4>
+                    <p class="price"><span class="old-price">RM 299</span> RM 249</p>
+                </div>
+            </div>
+
+            <div class="sale-card">
+                <div class="badge">SAVE RM50</div>
+                <div class="sale-img">
+                    <a href="product-detail.html?productID=bundle2">
+                        <img src="images/set bundle 2.jpg.jpeg" alt="Linoire Bundle Pink">
+                    </a>
+                    <div class="add-cart-overlay">QUICK ADD</div>
+                </div>
+                <div class="sale-info">
+                    <h4>Linoire Bundle Set (Pink)</h4>
+                    <p class="price"><span class="old-price">RM 299</span> RM 249</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clearance Items -->
+    <section class="sale-section">
+        <div class="sale-header">
+            <h2>Clearance Items</h2>
+            <p>Last pieces — No restock once sold out</p>
+        </div>
+
+        <div class="sale-grid">
+            <div class="sale-card clearance">
+                <div class="badge red">FINAL CALL</div>
+                <div class="sale-img">
+                    <a href="product-detail.html?productID=clear1">
+                        <img src="images/clearence 1.jpg.jpeg" alt="Trench Coat Black">
+                    </a>
+                </div>
+                <div class="sale-info">
+                    <h4>Trench Coat (Black)</h4>
+                    <p class="price"><span class="old-price">RM 349</span> RM 149</p>
+                </div>
+            </div>
+
+            <div class="sale-card clearance">
+                <div class="badge red">FINAL CALL</div>
+                <div class="sale-img">
+                    <a href="product-detail.html?productID=clear2">
+                        <img src="images/clearence 2.jpg.jpeg" alt="Trench Coat Beige">
+                    </a>
+                </div>
+                <div class="sale-info">
+                    <h4>Trench Coat (Beige)</h4>
+                    <p class="price"><span class="old-price">RM 349</span> RM 149</p>
+                </div>
+            </div>
+
+            <div class="sale-card clearance">
+                <div class="badge red">FINAL CALL</div>
+                <div class="sale-img">
+                    <a href="product-detail.html?productID=clear3">
+                        <img src="images/clearence 3.jpg.jpeg" alt="Trench Coat Grey">
+                    </a>
+                </div>
+                <div class="sale-info">
+                    <h4>Trench Coat (Grey)</h4>
+                    <p class="price"><span class="old-price">RM 349</span> RM 149</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<footer class="footer">
+        <div class="footer-content">
+            <div class="f-logo">ASTER.KL</div>
+            <div class="f-links">
+                <a href="https://www.instagram.com/aster.kl" target="_blank">Instagram</a>
+                <a href="https://www.tiktok.com/@aster.kl" target="_blank">TikTok</a><br><br>
+                <p>© 2025 ASTER| KL . All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+<script src="script.js"></script>
+    <div id="cart-overlay" class="cart-overlay"></div>
+<div id="cart-drawer" class="cart-drawer">
+    <div class="cart-header">
+        <h3>YOUR CART</h3>
+        <span id="close-cart">CLOSE ✕</span>
+    </div>
+    <div id="cart-items-container"></div>
+    <div class="cart-footer">
+        <div class="cart-total-row">
+            <span>TOTAL:</span>
+            <span id="cart-total">RM 0.00</span>
+        </div>
+        <button class="checkout-btn" id="checkout">CHECKOUT</button>
+    </div>
+
+</body>
+</html>

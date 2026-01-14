@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Collections | Aster.KL</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="about.html">ABOUT US</a>
+            <a href="eid2025.html">EID 2025</a>
+            <a href="collection.html">COLLECTION</a>
+            <a href="policy.html">POLICY</a>
+            <a href="sale.html" class="sale">SALE</a><br>
+            <a href="#" id="cart-icon">CART (<span id="cart-count">0</span>)</a>
+        </div>
+        <div class="mobile-nav">
+        <div class="logo-mobile">ASTER.KL</div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    </nav>
+
+    <section class="collection-slider-wrapper">
+        <div class="bg-text"></div>
+
+        <div class="slider-header">
+            <span>PREMIUM SERIES</span>
+            <h2>Our 2026 Collection</h2>
+            <div class="header-line"></div>
+        </div>
+
+        <div class="slider-container">
+            <button class="nav-arrow prev-btn" onclick="moveSlider(-1)">❮</button>
+            
+            <div class="slider-track">
+                <div class="col-card side" id="card1">
+                    <div class="card-num">01</div>
+                    <div class="col-image">
+                        <img src="images/summer 2.jpg" alt="Essential Summer">
+                    </div>
+                    <div class="col-info">
+                        <h3>Essential Summer</h3>
+                        <p>Minimalist tropical aesthetics</p>
+                        <a href="catalog.html#summer" class="btn-discover">DISCOVER MORE</a>
+                    </div>
+                </div>
+
+                <div class="col-card active" id="card2">
+                    <div class="card-num">02</div>
+                    <div class="col-image">
+                        <img src="images/karya agung 1.jpg" alt="Karya Agung">
+                    </div>
+                    <div class="col-info">
+                        <h3>Karya Agung</h3>
+                        <p>Traditional heritage embroidery</p>
+                        <a href="catalog.html#karya" class="btn-discover">DISCOVER MORE</a>
+                    </div>
+                </div>
+
+                <div class="col-card side" id="card3">
+                    <div class="card-num">03</div>
+                    <div class="col-image">
+                        <img src="images/khaleji 3.jpg" alt="Khaleeji Series">
+                    </div>
+                    <div class="col-info">
+                        <h3>Khaleeji Series</h3>
+                        <p>Middle Eastern elegance</p>
+                        <a href="catalog.html#khaleeji" class="btn-discover">DISCOVER MORE</a>
+                    </div>
+                </div>
+
+                <div class="col-card side" id="card4">
+                    <div class="card-num">04</div>
+                    <div class="col-image">
+                        <img src="images/latrench 2.jpg" alt="La Trench Series">
+                    </div>
+                    <div class="col-info">
+                        <h3>La Trench</h3>
+                        <p>Urban sophisticated outerwear</p>
+                        <a href="catalog.html#trench" class="btn-discover">DISCOVER MORE</a>
+                    </div>
+                </div>
+            </div>
+
+            <button class="nav-arrow next-btn" onclick="moveSlider(1)">❯</button>
+        </div>
+
+        <div class="slider-dots" id="dotsContainer">
+            <span class="dot"></span>
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="f-logo">ASTER.KL</div>
+            <div class="f-links">
+                <a href="https://www.instagram.com/aster.kl" target="_blank">Instagram</a>
+                <a href="https://www.tiktok.com/@aster.kl" target="_blank">TikTok</a><br><br>
+                <p>© 2025 ASTER| KL . All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+     <script src="script.js"></script>
+     <div id="cart-overlay" class="cart-overlay"></div>
+<div id="cart-drawer" class="cart-drawer">
+    <div class="cart-header">
+        <h3>YOUR CART</h3>
+        <span id="close-cart">CLOSE ✕</span>
+    </div>
+    <div id="cart-items-container"></div>
+    <div class="cart-footer">
+        <div class="cart-total-row">
+            <span>TOTAL:</span>
+            <span id="cart-total">RM 0.00</span>
+        </div>
+        <button class="checkout-btn" id="checkout">CHECKOUT</button>
+    </div>
+</div>
+
+
+    <script>
+        let current = 2;
+        const totalCards = 4;
+
+        function moveSlider(direction) {
+            current += direction;
+            if (current > totalCards) current = 1;
+            if (current < 1) current = totalCards;
+            updateSlider();
+        }
+
+        function updateSlider() {
+            const cards = document.querySelectorAll('.col-card');
+            const dots = document.querySelectorAll('.dot');
+            
+            cards.forEach((card, index) => {
+                card.classList.remove('active', 'side');
+                if (index + 1 === current) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.add('side');
+                }
+            });
+
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index + 1 === current);
+            });
+        }
+    </script>
+</body>
+</html>

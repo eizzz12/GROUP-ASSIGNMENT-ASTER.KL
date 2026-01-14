@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policies | Aster.KL</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="policy-bg">
+
+    <nav class="navbar">
+        <div class="nav-links">
+             <a href="index.html">HOME</a>
+            <a href="about.html">ABOUT US</a>
+            <a href="eid2025.html">EID 2025</a>
+            <a href="collection.html">COLLECTION</a>
+            <a href="policy.html">POLICY</a>
+            <a href="sale.html" class="sale">SALE</a><br>
+            <a href="#" id="cart-icon">CART (<span id="cart-count">0</span>)</a>
+        </div>
+        <div class="mobile-nav">
+        <div class="logo-mobile">ASTER.KL</div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    </nav>
+
+    <div class="policy-wrapper">
+        <aside class="policy-sidebar">
+            <div class="sticky-nav">
+                <span class="sub-label">CUSTOMER SERVICE</span>
+                <h2 class="main-title">Store <br>Guidelines</h2>
+                <nav class="side-nav">
+                    <a href="#shipping">01. Shipping & Delivery</a>
+                    <a href="#returns">02. Returns & Exchange</a>
+                    <a href="#terms">03. Terms & Conditions</a>
+                    <a href="#contact" class="contact-trigger">Need more help?</a>
+                </nav>
+            </div>
+        </aside>
+
+        <main class="policy-main">
+            
+            <section id="shipping" class="policy-card featured">
+                <div class="card-header">
+                    <span class="number-bg">01</span>
+                    <h3>Shipping & Delivery</h3>
+                </div>
+                <div class="card-body">
+                    <p class="large-p">Every piece of Aster.KL is shipped with the utmost care. We ensure your package arrives in the most premium condition.</p>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <h5>ESTIMATED ARRIVAL</h5>
+                            <p>3 - 5 Working Days</p>
+                        </div>
+                        <div class="detail-item">
+                            <h5>PARTNER COURIER</h5>
+                            <p>NinjaVan, J&T & PosLaju</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="returns" class="policy-card">
+                <div class="card-header">
+                    <span class="number-bg">02</span>
+                    <h3>Returns & Exchange</h3>
+                </div>
+                <div class="card-body">
+                    <p class="large-p">Quality is our promise. If there are any issues with your order, we are happy to assist with the return process.</p>
+                    <ul class="clean-list bold-list">
+                        <li>Exchange within <strong>7 days</strong> after recieve.</li>
+                        <li>Make sure the original tags are still on and the item has not been washed.</li>
+                        <li>Include the original receipt or proof of purchase..</li>
+                    </ul> 
+            </section>
+
+            <section id="terms" class="policy-card">
+                <div class="card-header">
+                    <span class="number-bg">03</span>
+                    <h3>Terms & Conditions</h3>
+                </div>
+                <div class="card-body">
+                    <p class="large-p">All buying and selling transactions at Aster.KL are subject to transparent terms to guarantee your rights as a customer.</p>
+                    <div class="terms-box">
+                        <p>Product color may vary by 5-10% due to studio lighting factors. Aster.KL reserves the right to change any promotions without prior notice.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="help-footer">
+                <h3>Any Question?</h3>
+                <p>Contact our customer care service at<strong> asterkl@gmail.com</strong></p>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="f-logo">ASTER.KL</div>
+            <div class="f-links">
+                <a href="https://www.instagram.com/aster.kl" target="_blank">Instagram</a>
+                <a href="https://www.tiktok.com/@aster.kl" target="_blank">TikTok</a><br><br>
+                <p>© 2025 ASTER| KL . All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <div id="cart-overlay" class="cart-overlay"></div>
+<div id="cart-drawer" class="cart-drawer">
+    <div class="cart-header">
+        <h3>YOUR CART</h3>
+        <span id="close-cart">CLOSE ✕</span>
+    </div>
+    <div id="cart-items-container"></div>
+    <div class="cart-footer">
+        <div class="cart-total-row">
+            <span>TOTAL:</span>
+            <span id="cart-total">RM 0.00</span>
+        </div>
+        <button class="checkout-btn" id="checkout">CHECKOUT</button>
+    </div>
+
+</body>
+</html>

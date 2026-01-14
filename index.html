@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aster.KL | Official Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+    <div class="nav-links">
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT US</a>
+        <a href="eid2025.html">EID 2025</a>
+        <a href="collection.html">COLLECTION</a>
+        <a href="policy.html">POLICY</a> 
+        <a href="sale.html" class="sale">SALE</a><br>
+        <a href="#" id="cart-icon">CART (<span id="cart-count">0</span>)</a>
+
+    </div>
+    <div class="mobile-nav">
+        <div class="logo-mobile">ASTER.KL</div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+</nav>
+
+    <header class="brand-section">
+        <div class="brand-content">
+            <h1 class="reveal">ASTER.KL</h1>
+            <p class="reveal">ESTABLISHED 2020</p>
+        </div>
+    </header>
+
+    <section class="adv-container">
+        <div class="adv-slider">
+            <div class="adv-track" id="advTrack">
+                <img src="images/adv 1.jpg" alt="ads 1">
+                <img src="images/adv 2.jpg" alt="ads 2">
+                <img src="images/adv 3.jpg" alt="ads 3">
+            </div>
+        </div>
+    </section>
+
+   <section class="collection-section container reveal">
+    <h2 class="title">NEW COLLECTIONS</h2>
+    <div class="collection-wrapper">
+        <div class="collection-track" id="colTrack">
+            <div class="col-slide">
+                <a href="eid2025.html"><img src="images/aude 3.jpg" alt="Aude"></a>
+                <a href="eid2025.html"><img src="images/asimetrik 3.jpg" alt="Asimetrik"></a>
+                <a href="catalog.html#trench"><img src="images/latrench 3.jpg" alt="La Trench"></a>
+                <a href="eid2025.html"><img src="images/ethereal 3.jpg" alt="Ethereal"></a>
+            </div>
+            <div class="col-slide">
+                <a href="eid2025.html"><img src="images/grandeur 3.jpg" alt="Grandeur"></a>
+                <a href="catalog.html#khaleeji"><img src="images/khaleji 3.jpg" alt="Khaleji"></a>
+                <a href="catalog.html#summer"><img src="images/summer 3.jpg" alt="Summer"></a>
+                <a href="catalog.html#karya"><img src="images/karya agung 3.jpg" alt="Karya Agung"></a>
+            </div>
+        </div>
+        <div class="nav-btns">
+            <button onclick="moveColSlide(-1)">❮</button>
+            <button onclick="moveColSlide(1)">❯</button>
+        </div>
+    </div>
+</section>
+
+    <section class="top-col container">
+        <h2 class="title reveal">TOP COLLECTION</h2>
+        
+        <div class="row reveal">
+            <div class="row-img"><img src="images/asimetrik 1.jpg"></div>
+            <div class="row-text">
+                <h3>Asimetrik</h3>
+                <p>Exclusive collection with premium materials.</p>
+            </div>
+        </div>
+
+        <div class="row reverse reveal">
+            <div class="row-img"><img src="images/karya agung 5.jpg"></div>
+            <div class="row-text">
+                <h3>Karya Agung</h3>
+                <p>Modern style for sophisticated men.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="f-logo">ASTER.KL</div>
+            <div class="f-links">
+                <a href="https://www.instagram.com/aster.kl" target="_blank">Instagram</a>  
+                <a href="https://www.tiktok.com/@aster.kl" target="_blank">TikTok</a><br><br>
+                <p>© 2025 ASTER| KL . All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <div id="cart-overlay" class="cart-overlay"></div>
+<div id="cart-drawer" class="cart-drawer">
+    <div class="cart-header">
+        <h3>YOUR CART</h3>
+        <span id="close-cart">CLOSE ✕</span>
+    </div>
+    <div id="cart-items-container"></div>
+    <div class="cart-footer">
+        <div class="cart-total-row">
+            <span>TOTAL:</span>
+            <span id="cart-total">RM 0.00</span>
+        </div>
+        <button class="checkout-btn" id="checkout">CHECKOUT</button>
+    </div>
+</div>
+
+</body>
+</html>
